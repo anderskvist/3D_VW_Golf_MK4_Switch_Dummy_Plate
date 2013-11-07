@@ -11,8 +11,21 @@ z = 3;
 a = 7;
 
 difference() {
-	translate([-x/2,-y/2,-z]) cube([x,y,z*2]);
-	translate([-(x+10)/2,-(y+10)/2,3]) rotate([0,a,0]) cube([x+10,y+10,z+10]);
+	union() {
+		difference()	{
+			translate([-x/2,-y/2,-z]) cube([x,y,z*2]);
+			translate([-(x+10)/2,-(y+10)/2,3]) rotate([0,a,0]) cube([x+10,y+10,z+10]);
+		}
+		difference() {
+			translate([-11,-20,-1]) cube([22,40,10]);
+			translate([-9,-18,-1]) cube([18,36,11]);
+			translate([11,20,-1]) rotate([0,0,0]) rounding(11,2);
+			translate([-11,20,-1]) rotate([0,0,90]) rounding(11,2);
+			translate([11,-20,-1]) rotate([0,0,270]) rounding(11,2);
+			translate([-11,-20,-1]) rotate([0,0,180]) rounding(11,2);
+		}
+	}
+
 	translate([-(x+10)/2,-(y+10)/2,-12]) rotate([0,a,0]) cube([x+10,y+10,z+10]);
 	translate([x/2,-y/2,-5]) rotate([0,0,270]) rounding(10,1);
 	translate([-x/2,-y/2,-5]) rotate([0,0,180]) rounding(10,1);
@@ -21,7 +34,7 @@ difference() {
 }
 difference() {
 	union() {
-			translate([-(x-20)/2,-(y-6)/2,-z/2+1]) cube([x-20,y-6,22]);
+		translate([-(x-20)/2,-(y-6)/2,-z/2+1]) cube([x-20,y-6,22]);
 		translate([-4,-18,13]) rotate([45,0,0]) cube([8,4,4]);
 		translate([-4,18,13]) rotate([45,0,0]) cube([8,4,4]);
 	}
