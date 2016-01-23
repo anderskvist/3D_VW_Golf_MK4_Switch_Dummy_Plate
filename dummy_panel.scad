@@ -10,6 +10,11 @@ y = 45; //45.5
 z = 3;
 a = 7;
 
+left = true;
+
+right_r = 1;
+left_r = 4;
+
 difference() {
 	union() {
 		difference()	{
@@ -32,10 +37,12 @@ difference() {
 	}
 
 	translate([-(x+10)/2,-(y+10)/2,-12]) rotate([0,a,0]) cube([x+10,y+10,z+10]);
-	translate([x/2,-y/2,-5]) rotate([0,0,270]) rounding(10,1);
-	translate([-x/2,-y/2,-5]) rotate([0,0,180]) rounding(10,1);
-	translate([-x/2,y/2,-5]) rotate([0,0,90]) rounding(10,4);
-	translate([x/2,y/2,-5]) rotate([0,0,0]) rounding(10,4);
+    // RIGHT
+	translate([x/2,-y/2,-5]) rotate([0,0,270]) rounding(10,right_r);
+	translate([-x/2,-y/2,-5]) rotate([0,0,180]) rounding(10,right_r);
+    // LEFT
+	translate([-x/2,y/2,-5]) rotate([0,0,90]) rounding(10,left_r);
+	translate([x/2,y/2,-5]) rotate([0,0,0]) rounding(10,left_r);
 }
 difference() {
 	union() {
